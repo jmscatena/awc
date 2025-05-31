@@ -1,14 +1,18 @@
 import os
+
+from django.contrib import staticfiles
 from dotenv import load_dotenv
 load_dotenv('.env')
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-SECRET_KEY = os.getenv("KEY")
+SECRET_KEY = "ABCDEFG12312312312312"
+#SECRET_KEY = os.getenv("KEY")
 
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['www.awc.tec.br','162.241.203.145','awc.tec.br']
+#ALLOWED_HOSTS = ['www.awc.tec.br','162.241.203.145','awc.tec.br']
+ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -63,7 +67,7 @@ DATABASES = {
         'ENGINE': 'mysql.connector.django',
         'NAME': os.getenv("DATABASE_NAME"),
         'USER': os.getenv("DATABASE_USER"),
-        'PASSWORD': os.getenv("DATABASE_PASSWORD"),
+        'PASSWORD': os.getenv("DATABASE_PASS"),
         'HOST': os.getenv("DATABASE_HOST"),
         'PORT': os.getenv("DATABASE_PORT"),
     }
@@ -99,8 +103,12 @@ USE_L10N = True
 USE_TZ = True
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
 
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
-SECURE_HSTS_SECONDS = 315360000
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+#SESSION_COOKIE_SECURE = True
+#CSRF_COOKIE_SECURE = True
+#SECURE_HSTS_SECONDS = 315360000
+#SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')

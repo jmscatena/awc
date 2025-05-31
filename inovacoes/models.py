@@ -15,7 +15,6 @@ class Inovacoes(models.Model):
     data_inicio = models.DateField()
     data_fim = models.DateField()
     criado_em = models.DateTimeField(auto_now_add=True)
-    areas = models.ManyToManyField(Areas, on_delete=models.DO_NOTHING)
-
+    areas = models.ManyToManyField(Areas)
     def __str__(self):
         return self.titulo

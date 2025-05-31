@@ -1,15 +1,21 @@
 from django.db import models
+from django.db import models
+
 
 # Create your models here.
 class Projetos(models.Model):
-    titulo = models.CharField(max_length=100)
-    descricao = models.TextField()
-    empresa = models.CharField(max_length=100)
-    repositorio = models.CharField(max_length=100)
-    data_inicio = models.DateField()
-    data_fim = models.DateField()
-    valor = models.FloatField()
-    criado_em = models.DateTimeField(auto_now_add=True)
-    ativo = models.BooleanField(default=True)
+    title = models.CharField(max_length=100)
+    description = models.TextField()
+    client = models.CharField(max_length=100)
+    image = models.ImageField(upload_to='projects_images/', blank=True, null=True)
+    highlights = models.TextField(blank=True,null=True)
+    duration = models.IntegerField(default=0)
+    year = models.IntegerField(default=2025)
+    repository = models.CharField(max_length=100, blank=True, null=True)
+    begin = models.DateField()
+    end = models.DateField()
+    value = models.FloatField()
+    createdAt = models.DateTimeField(auto_now_add=True)
+    active = models.BooleanField(default=True)
     def __str__(self):
-        return self.titulo
+        return self.title

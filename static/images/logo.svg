@@ -1,0 +1,26 @@
+<svg width="260" height="60" viewBox="0 0 270 60" xmlns="http://www.w3.org/2000/svg">
+  <!-- AWC Logo -->
+  <defs>
+    <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1a5276" />
+      <stop offset="100%" stop-color="#2980b9" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background Shape -->
+  <rect x="10" y="10" width="80" height="40" rx="11" fill="url(#logoGradient)" />
+
+  <!-- AWC Letters -->
+  <!--<text x="95" y="35" font-family="Poppins, sans-serif" font-size="28" font-weight="700" fill="#1a5276">AllWorks</text>-->
+  <text x="105" y="32" font-family="Poppins, sans-serif" font-size="28" font-weight="700" fill="#ff8a65">AllWorks</text>
+  <text x="105" y="51" font-family="Poppins, sans-serif" font-size="12" font-weight="400" fill="#ffffff">COMPANY</text>
+  
+  <!-- A Letter in Square -->
+  <text x="15" y="40" font-family="Poppins, sans-serif" font-size="28" font-weight="700" fill="#ffffff">AWC</text>
+  
+  <!-- Decorative Elements -->
+  <circle cx="10" cy="10" r="2" fill="#f39c12" />
+  <circle cx="89" cy="10" r="2" fill="#f39c12" />
+  <circle cx="10" cy="50" r="2" fill="#f39c12" />
+  <circle cx="89" cy="50" r="2" fill="#f39c12" />
+</svg>

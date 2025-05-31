@@ -1,0 +1,289 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}AllWorks Company - Professional Services, Courses & Training{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-7 hero-content">
+                <h1>{{ company_info.name }}</h1>
+                <p>{{ company_info.slogan }}</p>
+                <div class="hero-buttons">
+                    <a href="#about" class="btn btn-secondary me-3 mb-2 mb-md-0">
+                        <i class="fas fa-lightbulb me-2"></i>Saiba Mais
+                    </a>
+                    <a href="{% url 'contact' %}" class="btn btn-outline-light">
+                        <i class="fas fa-envelope me-2"></i>Contate-nos
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-5 d-none d-lg-block">
+                <!-- Abstract tech pattern/illustration -->
+                <div class="hero-graphic">
+                    <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" style="opacity: 0.8">
+                        <defs>
+                            <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#fff" stop-opacity="0.1"/>
+                                <stop offset="100%" stop-color="#fff" stop-opacity="0.4"/>
+                            </linearGradient>
+                        </defs>
+                        <!-- Abstract tech pattern - circles and lines -->
+                        <circle cx="250" cy="250" r="100" fill="none" stroke="url(#gradient1)" stroke-width="2" opacity="0.6"/>
+                        <circle cx="250" cy="250" r="150" fill="none" stroke="url(#gradient1)" stroke-width="1.5" opacity="0.4"/>
+                        <circle cx="250" cy="250" r="200" fill="none" stroke="url(#gradient1)" stroke-width="1" opacity="0.2"/>
+
+                        <!-- Connection lines -->
+                        <line x1="250" y1="150" x2="350" y2="80" stroke="url(#gradient1)" stroke-width="1.5"/>
+                        <circle cx="350" cy="80" r="8" fill="url(#gradient1)"/>
+
+                        <line x1="250" y1="150" x2="150" y2="100" stroke="url(#gradient1)" stroke-width="1.5"/>
+                        <circle cx="150" cy="100" r="8" fill="url(#gradient1)"/>
+
+                        <line x1="250" y1="350" x2="180" y2="420" stroke="url(#gradient1)" stroke-width="1.5"/>
+                        <circle cx="180" cy="420" r="8" fill="url(#gradient1)"/>
+
+                        <line x1="250" y1="350" x2="350" y2="400" stroke="url(#gradient1)" stroke-width="1.5"/>
+                        <circle cx="350" cy="400" r="8" fill="url(#gradient1)"/>
+
+                        <line x1="100" y1="250" x2="50" y2="180" stroke="url(#gradient1)" stroke-width="1.5"/>
+                        <circle cx="50" cy="180" r="8" fill="url(#gradient1)"/>
+
+                        <line x1="400" y1="250" x2="450" y2="200" stroke="url(#gradient1)" stroke-width="1.5"/>
+                        <circle cx="450" cy="200" r="8" fill="url(#gradient1)"/>
+
+                        <!-- Small decorative elements -->
+                        <circle cx="250" cy="250" r="15" fill="url(#gradient1)"/>
+                        <circle cx="150" cy="250" r="5" fill="url(#gradient1)"/>
+                        <circle cx="350" cy="250" r="5" fill="url(#gradient1)"/>
+                        <circle cx="250" cy="150" r="5" fill="url(#gradient1)"/>
+                        <circle cx="250" cy="350" r="5" fill="url(#gradient1)"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About Section -->
+<section id="about" class="py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-4 mb-lg-0">
+                <div class="px-4">
+                    <img src="{% static 'images/awc-team.avif'%}" alt="AllWorks Company Team" class="img-fluid rounded shadow">
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <h2 class="section-title text-start">About AllWorks Company</h2>
+                <p class="lead mb-4">Fundada em {{ company_info.founded }}, a AllWorks Company é uma fornecedora líder de serviços profissionais, cursos educacionais, programas de treinamento especializados e publicações do setor.</p>
+                
+                <h3 class="h4 mb-3">Nossa Missão</h3>
+                <p>{{ company_info.mission }}</p>
+                
+                <h3 class="h4 mb-3">Nossa Visião</h3>
+                <p>{{ company_info.vision }}</p>
+                
+                <div class="row mt-4">
+                    <div class="col-md-6 mb-3">
+                        <div class="d-flex align-items-center">
+                            <i class="fas fa-check-circle text-primary me-2"></i>
+                            <span>Fundada em {{ company_info.founded }}</span>
+                        </div>
+                    </div>
+                    <!--<div class="col-md-6 mb-3">
+                        <div class="d-flex align-items-center">
+                            <i class="fas fa-users text-primary me-2"></i>
+                            <span>{{ company_info.team_size }}</span>
+                        </div>
+                    </div>-->
+                    <div class="col-md-6 mb-3">
+                        <div class="d-flex align-items-center">
+                            <i class="fas fa-map-marker-alt text-primary me-2"></i>
+                            <span>HQ: {{ company_info.headquarters }}</span>
+                        </div>
+                    </div>
+                    <!--
+                    <div class="col-md-6 mb-3">
+                        <div class="d-flex align-items-center">
+                            <i class="fas fa-globe text-primary me-2"></i>
+                            <span>Global Presence</span>
+                        </div>
+                    </div>
+                    -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Core Values Section -->
+<section class="bg-light py-5">
+    <div class="container">
+        <h2 class="section-title">Nossos Valores Fundamentais</h2>
+        <div class="row">
+            {% for value in company_info.core_values %}
+                <div class="col-lg-3 mx-0">
+                    <div class="feature-box text-center fade-in">
+                        <div class="feature-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h3 class="h5">{{ value|safe }}</h3>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Featured Projects Section -->
+<section class="py-5">
+    <div class="container">
+        <h2 class="section-title">Projetos em destaque</h2>
+        <div class="row">
+            {% for project in featured_projects %}
+                <div class="col-lg-4 col-md-6 mb-4 fade-in">
+                    <div class="card project-card h-100">
+                        <img src="{% static project.image %}" class="card-img-top" alt="{{ project.title }}">
+                        <div class="card-body">
+                            <span class="project-category">{{ project.category }}</span>
+                            <h3 class="card-title h5">{{ project.title }}</h3>
+                            <p class="card-text">{{ project.descricao|truncatechars:150}}{% if project.description|length > 150 %}...{% endif %}</p>
+                        </div>
+                        <div class="card-footer">
+                            <a href="{% url 'projects' %}" class="btn-link">Mais Detalhes <i
+                                    class="fas fa-arrow-right ms-1"></i></a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="text-center mt-4">
+            <a href="{% url 'projects' %}" class="btn btn-primary">Todo Projetos</a>
+        </div>
+    </div>
+</section>
+
+<!-- Services Section -->
+<section class="bg-primary py-5">
+    <div class="container">
+        <h2 class="section-title text-white">Nossos Serviços</h2>
+        <div class="row">
+            <div class="col-lg-3 col-md-6 mb-4 fade-in">
+                <div class="feature-box text-center h-100">
+                    <div class="feature-icon">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <h3 class="h5">Projetos</h3>
+                    <p>Serviços de desenvolvimento de softwares e implantação de IoT para entregar resultados bem-sucedidos para suas
+                        iniciativas de negócios.</p>
+                    <a href="{% url 'projects' %}" class="btn-link text-white">Mais Detalhes</a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4 fade-in">
+                <div class="feature-box text-center h-100">
+                    <div class="feature-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3 class="h5">Cursos Educacionais</h3>
+                    <p>Programas educacionais abrangentes projetados para aprimorar habilidades e avanço na
+                        carreira.</p>
+                    <a href="{% url 'courses' %}" class="btn-link text-white">Mais Detalhes</a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4 fade-in">
+                <div class="feature-box text-center h-100">
+                    <div class="feature-icon">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <h3 class="h5">Programas de Treinamento</h3>
+                    <p>Treinamento corporativo especializado para desenvolver talentos e fortalecer as capacidades
+                        organizacionais.</p>
+                    <a href="{% url 'training' %}" class="btn-link text-white">Mais Detalhes</a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4 fade-in">
+                <div class="feature-box text-center h-100">
+                    <div class="feature-icon">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <h3 class="h5">Publicações</h3>
+                    <p>Pesquisas líderes do setor, documentos técnicos e guias para mantê-lo informado sobre as melhores
+                        práticas.</p>
+                    <a href="{% url 'publications' %}" class="btn-link text-white">Mais Detalhes</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Courses Section -->
+<section class="py-5">
+    <div class="container">
+        <h2 class="section-title">Cursos em Destaque</h2>
+        <div class="row">
+            {% for course in featured_courses %}
+                <div class="col-lg-6 mb-4 fade-in">
+                    <div class="card course-card h-100">
+                        <div class="row g-0 h-100">
+                            <div class="col-md-4">
+                                <img src="{% static course.image %}" class="img-fluid rounded-start h-100 w-100 object-fit-cover" alt="{{ course.title }}">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <span class="course-level">{{ course.level }}</span>
+                                    <span class="course-duration">{{ course.duration }}</span>
+                                    <h3 class="card-title h5">{{ course.title }}</h3>
+                                    <p class="card-text">{{ course.description|truncatechars:100 }}</p>
+                                    <div class="d-flex align-items-center mt-3">
+                                        <a href="{% url 'courses' %}" class="btn-link">Mais Detalhes <i
+                                                class="fas fa-arrow-right ms-1"></i></a>
+                                        <span class="ms-auto">{{ course.price }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="text-center mt-4">
+            <a href="{% url 'courses' %}" class="btn btn-primary">Ver Todos os Cursos</a>
+        </div>
+    </div>
+</section>
+
+<!-- Certifications Section -->
+<section class="bg-light py-5">
+    <div class="container">
+        <h2 class="section-title">Nossas Qualificações</h2>
+        <div class="row justify-content-center">
+            {% for certification in company_info.certifications %}
+                <div class="col-lg-3 col-md-6 mb-4 fade-in">
+                    <div class="feature-box text-center h-100">
+                        <div class="feature-icon">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <h3 class="h5">{{ certification }}</h3>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="py-5 bg-primary">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 text-center">
+                <h2 class="text-white mb-4">Pronto para Transformar seu Negócio?</h2>
+                <p class="text-white mb-4">Vamos trabalhar juntos para alcançar seus objetivos através de nossos
+                    serviços especializados, cursos e programas de treinamento.</p>
+                <a href="{% url 'contact' %}" class="btn btn-secondary btn-lg">Entre em Contato</a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

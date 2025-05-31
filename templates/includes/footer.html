@@ -1,0 +1,90 @@
+{% load static %}
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                <div class="mb-4">
+                    <img src="{% static 'images/logo.svg' %}" alt="Logo AllWorks Company">
+                </div>
+                <p>A AllWorks Company oferece soluções profissionais, cursos educacionais, programas de treinamento
+                    especializado e publicações do setor para aprimorar as capacidades organizacionais e
+                    individuais.</p>
+                <div class="social-links mt-3">
+                    <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                <h4>Nossos Serviços</h4>
+                <ul class="footer-links">
+                    <li><a href="{% url 'projects' %}">Gestão de Projetos</a></li>
+                    <li><a href="{% url 'projects' %}">Transformação Digital</a></li>
+                    <li><a href="{% url 'projects' %}">Consultoria Estratégica</a></li>
+                    <li><a href="{% url 'courses' %}">Cursos Educacionais</a></li>
+                    <li><a href="{% url 'training' %}">Treinamento Corporativo</a></li>
+                    <li><a href="{% url 'publications' %}">Publicações de Pesquisa</a></li>
+                </ul>
+            </div>
+            
+            <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                <h4>Links Rápidos</h4>
+                <ul class="footer-links">
+                    <li><a href="{% url 'index' %}">Início</a></li>
+                    <li><a href="{% url 'index' %}#about">Sobre Nós</a></li>
+                    <li><a href="{% url 'courses' %}">Cursos</a></li>
+                    <li><a href="{% url 'projects' %}">Projetos</a></li>
+                    <li><a href="{% url 'contact' %}">Contato</a></li>
+                    <li><a href="#">Política de Privacidade</a></li>
+                    <li><a href="#">Termos de Serviço</a></li>
+                </ul>
+            </div>
+            
+            <div class="col-lg-3 col-md-6">
+                <h4>Mantenha-se Atualizado</h4>
+                <p class="mb-3">Inscreva-se em nossa newsletter para receber as últimas atualizações, insights do setor
+                    e conteúdo exclusivo.</p>
+                <form id="newsletterForm" action="{% url 'subscribe_newsletter' %}" method="POST">
+                    {% csrf_token %}
+                    <div class="input-group mb-3">
+                        <input type="email" name="email" class="form-control" placeholder="Seu E-mail" required>
+                        <button class="btn btn-secondary" type="submit">Inscrever-se</button>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="privacy_agreement" id="privacyCheck"
+                               required>
+                        <label class="form-check-label small" for="privacyCheck">
+                            Concordo com a <a href="#">política de privacidade</a>
+                        </label>
+                    </div>
+                </form>
+
+                <h4 class="mt-4">Informações de Contato</h4>
+                <ul class="footer-links">
+                    <li>
+                        <i class="fas fa-map-marker-alt me-2"></i>
+                        Avenida Empresarial, 123, Sala 500<br>
+                        São Paulo, SP 01001
+                    </li>
+                    <li>
+                        <i class="fas fa-phone-alt me-2"></i>
+                        +55 (11) 5555-7890
+                    </li>
+                    <li>
+                        <i class="fas fa-envelope me-2"></i>
+                        info@allworkscompany.com
+                    </li>
+                </ul>
+                <div class="mt-3">
+                    <a href="{% url 'contact' %}" class="btn btn-outline-light btn-sm">Entre em Contato</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; {% now "Y" %} AllWorks Company. Todos os direitos reservados.</p>
+        </div>
+    </div>
+</footer>
