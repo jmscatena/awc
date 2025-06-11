@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
-
-{% block title %}Training Programs - AllWorks Company{% endblock %}
+{% load static %}
+{% block title %}Programas de Treinamento - AllWorks Company{% endblock %}
 
 {% block content %}
 <!-- Training Hero -->
@@ -8,8 +8,10 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 mx-auto text-center">
-                <h1 class="mb-4">Corporate Training Programs</h1>
-                <p class="lead">Our specialized training programs are designed to enhance organizational capabilities, develop talent, and drive business performance through customized learning solutions.</p>
+                <h1 class="mb-4 text-white">Programas de Treinamento Corporativo</h1>
+                <p class="lead">Nossos programas especializados de treinamento são projetados para aprimorar as
+                    capacidades organizacionais, desenvolver talentos e impulsionar o desempenho dos negócios por meio
+                    de soluções de aprendizagem personalizadas.</p>
             </div>
         </div>
     </div>
@@ -20,16 +22,21 @@
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-6 mb-4 mb-lg-0">
-                <h2 class="section-title text-start">Transform Your Organization</h2>
-                <p class="lead mb-4">AllWorks Company delivers high-impact training programs that address specific organizational needs and challenges. Our approach combines industry expertise, practical methodologies, and engaging delivery formats to create meaningful learning experiences.</p>
-                <p>Each training program is customizable to your organization's specific context, culture, and objectives. We work closely with you to ensure that the training delivers measurable outcomes that align with your strategic goals.</p>
+                <h2 class="section-title text-start">Transforme Sua Organização</h2>
+                <p class="lead mb-4">A AllWorks Company oferece programas de treinamento de alto impacto que abordam
+                    necessidades e desafios organizacionais específicos. Nossa abordagem combina expertise do setor,
+                    metodologias práticas e formatos de entrega envolventes para criar experiências de aprendizado
+                    significativas.</p>
+                <p>Cada programa de treinamento é personalizável ao contexto, cultura e objetivos específicos da sua
+                    organização. Trabalhamos em estreita colaboração com você para garantir que o treinamento forneça
+                    resultados mensuráveis alinhados com seus objetivos estratégicos.</p>
                 <div class="mt-4">
-                    <a href="{{ url_for('contact') }}" class="btn btn-primary">Discuss Your Training Needs</a>
+                    <a href="{% url 'contact' %}" class="btn btn-primary">Consulte-nos sobre Suas Necessidades de Treinamento</a>
                 </div>
             </div>
             <div class="col-lg-6">
                 <div class="px-4">
-                    <img src="https://pixabay.com/get/ge98175a17db8e08fb59b9cac70f9eda5f708bdcfdd3c1a37946e5884ff2bcf4b2cac5fb11b6788167d802cd236b7ce21530b10c75046fae4c92ff22281e903fd_1280.jpg" alt="Corporate Training Session" class="img-fluid rounded shadow">
+                    <img src="{% static 'images/training_main.jpg' %}" alt="Corporate Training Session" class="img-fluid rounded shadow">
                 </div>
             </div>
         </div>
@@ -39,8 +46,8 @@
 <!-- Training Programs -->
 <section class="bg-light py-5">
     <div class="container">
-        <h2 class="section-title">Our Training Programs</h2>
-        
+        <h2 class="section-title">Nossos Programas de Treinamento</h2>
+
         <div class="row">
             {% for program in training_programs %}
                 <div class="col-lg-4 mb-4 fade-in">
@@ -121,9 +128,9 @@
                                         </div>
                                     {% endfor %}
                                 </div>
-                                
-                                <h5 class="mt-4 mb-3">Our Approach</h5>
-                                <p>Our training program combines:</p>
+
+                                <h5 class="mt-4 mb-3">Nossa Abordagem</h5>
+                                <p>Nosso programa de treinamento combina:</p>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <ul class="list-unstyled">
@@ -140,9 +147,10 @@
                                         </ul>
                                     </div>
                                 </div>
-                                
-                                <h5 class="mt-4 mb-3">Customization Options</h5>
-                                <p>This program can be tailored to your organization's specific needs. Customization options include:</p>
+
+                                <h5 class="mt-4 mb-3">Opções de Personalização</h5>
+                                <p>Este programa pode ser adaptado às necessidades específicas da sua organização. As
+                                    opções de personalização incluem:</p>
                                 <ul class="list-unstyled">
                                     <li><i class="fas fa-cog text-primary me-2"></i>Industry-specific case studies and examples</li>
                                     <li><i class="fas fa-cog text-primary me-2"></i>Alignment with your organizational frameworks and terminology</li>
@@ -151,8 +159,8 @@
                                 </ul>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <a href="{{ url_for('contact') }}" class="btn btn-primary">Request Training</a>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                                <a href="{% url 'contact' %}" class="btn btn-primary">Solicitar Treinamento</a>
                             </div>
                         </div>
                     </div>
@@ -165,7 +173,7 @@
 <!-- Training Methodology -->
 <section class="py-5">
     <div class="container">
-        <h2 class="section-title">Our Training Methodology</h2>
+        <h2 class="section-title">Nossa Metodologia de Treinamento</h2>
         <div class="row">
             <div class="col-lg-3 col-md-6 mb-4 fade-in">
                 <div class="feature-box text-center h-100">
@@ -217,7 +225,7 @@
                 </div>
             </div>
             <div class="col-lg-6 mt-4 mt-lg-0">
-                <h2 class="section-title text-start">Why Choose Our Training</h2>
+                <h2 class="section-title text-start">Por Que Escolher Nosso Treinamento</h2>
                 <div class="d-flex mb-4">
                     <div class="me-3">
                         <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
@@ -225,8 +233,9 @@
                         </div>
                     </div>
                     <div>
-                        <h3 class="h5">Industry Experts</h3>
-                        <p>Our trainers are practitioners with extensive experience in their fields, bringing real-world insights to every session.</p>
+                        <h3 class="h5">Especialistas do Setor</h3>
+                        <p>Nossos treinadores são profissionais com vasta experiência em suas áreas, trazendo insights
+                            do mundo real para cada sessão.</p>
                     </div>
                 </div>
                 <div class="d-flex mb-4">
@@ -236,8 +245,9 @@
                         </div>
                     </div>
                     <div>
-                        <h3 class="h5">Customized Approach</h3>
-                        <p>We tailor each program to your specific organizational context, challenges, and objectives for maximum relevance.</p>
+                        <h3 class="h5">Abordagem Personalizada</h3>
+                        <p>Adaptamos cada programa ao seu contexto organizacional específico, desafios e objetivos para
+                            máxima relevância.</p>
                     </div>
                 </div>
                 <div class="d-flex mb-4">
@@ -247,8 +257,9 @@
                         </div>
                     </div>
                     <div>
-                        <h3 class="h5">Practical Application</h3>
-                        <p>Our focus on practical, applicable skills ensures participants can implement learning immediately in their roles.</p>
+                        <h3 class="h5">Aplicação Prática</h3>
+                        <p>Nosso foco em habilidades práticas e aplicáveis garante que os participantes possam
+                            implementar o aprendizado imediatamente em suas funções.</p>
                     </div>
                 </div>
                 <div class="d-flex">
@@ -258,8 +269,9 @@
                         </div>
                     </div>
                     <div>
-                        <h3 class="h5">Measurable Results</h3>
-                        <p>We provide comprehensive evaluation and reporting to demonstrate the impact and ROI of your training investment.</p>
+                        <h3 class="h5">Resultados Mensuráveis</h3>
+                        <p>Fornecemos avaliação e relatórios abrangentes para demonstrar o impacto e o retorno sobre o
+                            investimento do seu treinamento.</p>
                     </div>
                 </div>
             </div>
@@ -270,7 +282,7 @@
 <!-- Testimonials -->
 <section class="py-5">
     <div class="container">
-        <h2 class="section-title">Client Testimonials</h2>
+        <h2 class="section-title">Depoimentos de Clientes</h2>
         <div class="row">
             <div class="col-lg-4 col-md-6 mb-4 fade-in">
                 <div class="card h-100">
@@ -344,9 +356,10 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-8 text-center">
-                <h2 class="text-white mb-4">Ready to Transform Your Organization?</h2>
-                <p class="text-white mb-4">Contact us to discuss how our training programs can address your specific organizational challenges and development needs.</p>
-                <a href="{{ url_for('contact') }}" class="btn btn-secondary btn-lg">Request a Consultation</a>
+                <h2 class="text-white mb-4">Pronto para Transformar Sua Organização?</h2>
+                <p class="text-white mb-4">Entre em contato conosco para discutir como nossos programas de treinamento
+                    podem atender aos seus desafios organizacionais específicos e necessidades de desenvolvimento.</p>
+                <a href="{% url 'contact' %}" class="btn btn-secondary btn-lg">Solicitar uma Consulta</a>
             </div>
         </div>
     </div>

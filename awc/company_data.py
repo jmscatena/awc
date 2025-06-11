@@ -220,7 +220,7 @@ def get_training_programs():
             'title': 'Corporate Leadership Accelerator',
             'target_audience': 'Emerging and mid-level leaders',
             'description': 'A comprehensive leadership development program designed to accelerate the growth of high-potential talent within organizations. This immersive program combines interactive workshops, personalized coaching, practical applications, and peer learning to develop well-rounded leaders ready to navigate complex business challenges.',
-            'image': 'https://pixabay.com/get/ge98175a17db8e08fb59b9cac70f9eda5f708bdcfdd3c1a37946e5884ff2bcf4b2cac5fb11b6788167d802cd236b7ce21530b10c75046fae4c92ff22281e903fd_1280.jpg',
+            'image': 'images/training_main.jpg',
             'duration': '6 months',
             'delivery_method': 'Blended (in-person and virtual)',
             'key_outcomes': [
