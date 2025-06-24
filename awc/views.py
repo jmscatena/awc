@@ -1,8 +1,10 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
-from projetos.models import Projetos
-from cursos.models import Cursos
 from . import company_data
+from django.shortcuts import render, redirect
+from django.core.mail import send_mail
+from django.conf import settings
+from django.template.loader import render_to_string
 
 def index(request):
     """Render the home page with company overview"""
@@ -65,21 +67,43 @@ def contact(request):
         form = company_data.ContactForm(request.POST)
         if form.is_valid():
             try:
-                contact_submission = company_data.ContactSubmission.objects.create(
-                    name=form.cleaned_data['name'],
-                    email=form.cleaned_data['email'],
-                    subject=form.cleaned_data['subject'],
-                    inquiry_type=form.cleaned_data['inquiry_type'],
-                    message=form.cleaned_data['message']
+                # --- CORRIGIDO: Removidas as vírgulas do final ---
+                name = form.cleaned_data['name']
+                email = form.cleaned_data['email']
+                subject = form.cleaned_data['subject']
+                inquiry_type = form.cleaned_data['inquiry_type']
+                message = form.cleaned_data['message']
+
+                plain_message = (
+                    f"Você recebeu uma nova mensagem de contato:\n\n"
+                    f"Nome: {name}\n"
+                    f"E-mail: {email}\n"
+                    f"Categoria: {inquiry_type}\n"
+                    f"Assunto: {subject}\n\n"
+                    f"Mensagem:\n{message}"
+                )
+
+                # Usando as variáveis subject e plain_message no envio
+                send_mail(
+                    f"Novo Contato via Site: {subject}",  # Assunto dinâmico
+                    plain_message,  # Corpo do e-mail
+                    settings.EMAIL_HOST_USER,  # Remetente configurado
+                    ['info@awc.tec.br'],  # Destinatário
+                    fail_silently=False
                 )
                 messages.success(request, 'Thank you for your message! We will get back to you soon.')
                 return redirect('contact')
+
             except Exception as e:
-                messages.error(request, 'An error occurred. Please try again later.')
+                # Bloco de exceção melhorado para depuração
+                print(f"ERRO AO PROCESSAR FORMULÁRIO DE CONTATO: {e}")
+                messages.error(request, 'An error occurred while sending your message. Please try again later.')
+                # Não redirecione aqui, para que o usuário não perca os dados digitados
     else:
         form = company_data.ContactForm()
-    return render(request, 'contact.html', {'form': form})
 
+    # O return final renderiza o formulário (novo ou com erros)
+    return render(request, 'contact.html', {'form': form})
 
 def subscribe_newsletter(request):
     """Handle newsletter subscription form"""

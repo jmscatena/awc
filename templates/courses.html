@@ -83,6 +83,11 @@
                                 <div class="card-body">
                                     <span class="course-level">{{ course.level }}</span>
                                     <span class="course-duration">{{ course.duration }}</span>
+                                    {% if course.status == 'Produção' %}
+                                    <span class="course-duration bg-warning">{{ course.status }}</span>
+                                    {% else %}
+                                    <span class="course-duration bg-info">{{ course.status }}</span>
+                                    {% endif %}
                                     <h3 class="card-title h5">{{ course.title }}</h3>
                                     <p class="card-text">{{ course.description }}</p>
 
@@ -163,12 +168,12 @@
                                     <div class="col-md-6">
                                         <ul class="list-unstyled">
                                             <li><i class="fas fa-check-circle text-success me-2"></i>Conhecimento
-                                                prático da indústria
+                                                prático
                                             </li>
                                             <li><i class="fas fa-check-circle text-success me-2"></i>Experiência prática
                                             </li>
                                             <li><i class="fas fa-check-circle text-success me-2"></i>Metodologias e
-                                                ferramentas mais recentes
+                                                ferramentas mais utilizadas
                                             </li>
                                         </ul>
                                     </div>
@@ -177,11 +182,10 @@
                                             <li><i class="fas fa-check-circle text-success me-2"></i>Técnicas de
                                                 resolução de problemas
                                             </li>
-                                            <li><i class="fas fa-check-circle text-success me-2"></i>Melhores práticas
-                                                do mercado
+                                            <li><i class="fas fa-check-circle text-success me-2"></i>Melhores modelos
+                                                práticos
                                             </li>
-                                            <li><i class="fas fa-check-circle text-success me-2"></i>Preparação para
-                                                certificação profissional
+                                            <li><i class="fas fa-check-circle text-success me-2"></i>Preparação profissional
                                             </li>
                                         </ul>
                                     </div>

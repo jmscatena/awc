@@ -2,6 +2,94 @@
 This module provides data for the company website.
 In a real application, this would likely come from a database.
 """
+from django import forms
+from django.forms import TextInput
+
+
+class ContactForm(forms.Form):
+    """Form for website visitors to contact the company"""
+    name = forms.CharField(
+        label='Nome',
+        min_length=2,
+        max_length=100,
+        widget=TextInput(attrs={
+            'class': 'form-control form-control-lg',
+            'id': 'name-input',
+            'placeholder': 'Digite seu nome'
+        }),
+        error_messages={
+            'required': 'Nome Obrigatório',
+            'min_length': 'Nome precisa ter entre 2 a 100 caracteres',
+            'max_length': 'Nome precisa ter entre 2 a 100 caracteres',
+        }
+    )
+
+    email = forms.EmailField(
+        label='Email',
+        widget=forms.EmailInput(attrs={
+            'class': 'form-control form-control-lg',
+            'id': 'email-input',
+            'placeholder': 'Entre com seu email'
+        }),
+        error_messages={
+            'required': 'Email obrigatório',
+            'invalid': 'Entre com um email válido'
+        }
+    )
+
+    subject = forms.CharField(
+        label='Assunto',
+        min_length=3,
+        max_length=200,
+        widget=TextInput(attrs={
+            'class': 'form-control form-control-lg',
+            'id': 'subject-input',
+            'placeholder': 'Digite a mensagem'
+        }),
+        error_messages={
+            'required': 'Assunto obrigatório',
+            'min_length': 'Assunto deve conter entre 3 a 200 caracteres',
+            'max_length': 'Assunto deve conter entre 3 a 200 caracteres',
+        }
+    )
+
+    inquiry_type = forms.ChoiceField(
+        label='Categoria',
+        choices=[
+            ('', 'Selecione a categoria'),
+            ('project', 'Projetos - Informações'),
+            ('course', 'Cursos - Informações'),
+            ('training', 'Programa de Treinamento'),
+            ('publication', 'Publicações'),
+            ('partnership', 'Parcerias'),
+            ('other', 'Outros')
+        ],
+        widget=forms.Select(attrs={
+            'class': 'form-select form-select-lg',
+            'id': 'inquiry-type-input'
+        }),
+        error_messages={
+            'required': 'Please select an inquiry type'
+        }
+    )
+
+    message = forms.CharField(
+        label='Mensagem',
+        widget=forms.Textarea(attrs={
+            'class': 'form-control form-control-lg',
+            'id': 'message-input',
+            'rows': 5,
+            'placeholder': 'Digite sua mensagem'
+        }),
+        min_length=10,
+        max_length=2000,
+        error_messages={
+            'required': 'Mensagem obrigatória',
+            'min_length': 'Mensagem deve conter entre 10 a 2000 caracteres',
+            'max_length': 'Mensagem deve conter entre 10 a 2000 caracteres',
+        }
+    )
+
 
 def get_company_info():
     """Return company information for the website"""
@@ -105,22 +193,6 @@ def get_projects():
             'duration': '36 months',
             'year': 2025
         },
-        {
-            'id': 5,
-            'title': 'Cybersecurity Enhancement Program',
-            'category': 'Cybersecurity',
-            'client': 'International Banking Group',
-            'description': 'Implemented a comprehensive cybersecurity enhancement program for a banking group, including advanced threat detection, employee training, and secure architecture design, strengthening protection of customer data and financial assets.',
-            'image': 'https://pixabay.com/get/gc088ffb5a48e7b51b39e00409635b0a4e89a9da5b725bb63c410ba3c713ba0b35194a940aa0b75e75d86846793a95e7f091e1551e4b9ab652302ca5819bd34b7_1280.jpg',
-            'highlights': [
-                'Advanced threat protection',
-                'Security awareness training',
-                'Zero-trust architecture',
-                'Compliance framework implementation'
-            ],
-            'duration': '9 months',
-            'year': 2023
-        },
 
     ]
 
@@ -130,22 +202,25 @@ def get_courses():
         {
             'id': 1,
             'title': 'Lógica e Programação - Essencial',
-            'category': 'Project Management',
-            'level': 'Iniciante (Qualquer Área)',
+            'category': 'Lógica de Programação',
+            'level': 'Iniciante',
             'description': 'Este curso abrangente oferece uma jornada completa pelo mundo da programação Python, começando com fundamentos de lógica e avançando até a orientação a objetos. O conteúdo foi estruturado para proporcionar uma progressão natural de aprendizado, com exemplos práticos e código comentado em cada etapa. Cada módulo foi cuidadosamente desenvolvido para construir uma base sólida de conhecimento, permitindo que você evolua de iniciante a programador intermediário com confiança',
             'image': 'images/curso_logica2.jpg',
             'duration': '40 horas',
+            'status':'Matrículas Abertas - Turma 07/2025',
             'format': 'Online com aulas ao vivo',
-            'certification': 'Sim - PMI PDUs available',
+            'certification': 'Sim - Certificado de Conclusão',
             'modules': [
-                'Strategic Project Leadership',
-                'Advanced Risk Management',
-                'Complex Stakeholder Engagement',
-                'Agile-Waterfall Hybrid Methodologies',
-                'Project Recovery Strategies',
-                'Portfolio Optimization Techniques'
+                'Principais Aspectos da Programação',
+                'Como Organizar o Pensamento e Estruturas Lógicas',
+                'Desenvolvendo as Ações',
+                'Elementos Básicos da Programação - Variáveis',
+                'Elementos Básicos da Programação - Comparação e Repetição',
+                'Elementos Básicos da Programação - Subrotinas',
+                'Codificando as Ações em C e Python',
+                'Programação Orientada à Objetoss',
             ],
-            'price': '$1,995'
+            'price': 'R$300'
         },
         {
             'id': 2,
@@ -155,6 +230,7 @@ def get_courses():
             'description': 'An introduction to the world of data science and analytics, focusing on practical skills and real-world applications. Participants will learn the entire data science workflow from data collection and cleaning to analysis and visualization, with hands-on projects using industry-standard tools.',
             'image': 'images/curso_sec2.jpg',
             'duration': '60 horas',
+            'status': 'Produção',
             'format': 'Hybrid (online and in-person options)',
             'certification': 'Sim',
             'modules': [
@@ -166,50 +242,9 @@ def get_courses():
                 'Introduction to Machine Learning',
                 'Communicating Data Insights'
             ],
-            'price': '$1,495'
+            'price': '--'
         },
-        {
-            'id': 3,
-            'title': 'Leadership Excellence Program',
-            'category': 'Leadership',
-            'level': 'Intermediate to Advanced',
-            'description': 'A transformative leadership development program designed for mid to senior-level managers. This course combines cutting-edge leadership theory with practical application, enabling participants to enhance their leadership effectiveness and drive organizational performance.',
-            'image': 'https://pixabay.com/get/gfe112c1622958c53c49fc6130c045dbd7fd5e2e28c0e675a6267974876e71d61b6feb03afb8e841e9d8e63d5755745b2b25afb5fb11e86cf208a04c6e0c26e63_1280.jpg',
-            'duration': '8 weeks',
-            'format': 'Intensivo presencial com auxílio executivo',
-            'certification': 'Sim',
-            'modules': [
-                'Strategic Leadership Vision',
-                'Emotional Intelligence for Leaders',
-                'Building High-Performance Teams',
-                'Change Management Excellence',
-                'Inclusive Leadership Practices',
-                'Conflict Resolution and Negotiation',
-                'Leadership Communication'
-            ],
-            'price': '$2,495'
-        },
-        {
-            'id': 4,
-            'title': 'Digital Marketing Mastery',
-            'category': 'Marketing',
-            'level': 'All Levels',
-            'description': 'A comprehensive digital marketing course covering the latest strategies, tools, and platforms. Participants will develop practical skills in SEO, content marketing, social media, email campaigns, and analytics, learning to create integrated marketing strategies that drive measurable results.',
-            'image': 'https://pixabay.com/get/g921dddd95c9163712cc896a43b0ade029d8711efa856401f27121dec89a221a0e49688bb19fd39c31b7d94176dd27f0911cd046a90c7b2cfc5a802615720c4f4_1280.jpg',
-            'duration': '8 weeks',
-            'format': 'Online with interactive workshops',
-            'certification': 'Sim',
-            'modules': [
-                'Digital Marketing Strategy Development',
-                'Search Engine Optimization (SEO)',
-                'Content Marketing Excellence',
-                'Social Media Marketing',
-                'Email Marketing Campaigns',
-                'Pay-Per-Click Advertising',
-                'Analytics and Performance Measurement'
-            ],
-            'price': '$1,295'
-        }
+
     ]
 
 def get_training_programs():
@@ -340,3 +375,6 @@ def get_publications():
             'download_format': 'PDF'
         }
     ]
+
+
+

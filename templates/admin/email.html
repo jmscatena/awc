@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ subject }}</title>
+</head>
+<body>
+    <h2>Nova Mensagem de Contato</h2>
+    <p><strong>Nome:</strong> {{ name }}</p>
+    <p><strong>E-mail:</strong> {{ email }}</p>
+    <p><strong>Assunto:</strong> {{ subject }}</p>
+    <hr>
+    <p><strong>Mensagem:</strong></p>
+    <p>{{ message|linebreaks }}</p>
+</body>
+</html>

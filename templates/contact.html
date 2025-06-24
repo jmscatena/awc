@@ -1,287 +1,319 @@
 {% extends 'base.html' %}
+{% load static %}
 
-{% block title %}Contact Us - AllWorks Company{% endblock %}
+{% block title %}Contato - AllWorks Company{% endblock %}
 
 {% block content %}
-<!-- Contact Hero -->
-<section class="bg-primary py-5 text-white">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 mx-auto text-center">
-                <h1 class="mb-4">Contact Us</h1>
-                <p class="lead">Get in touch with our team to discuss your project, training needs, or any questions about our services and offerings.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Contact Form and Info -->
-<section class="py-5">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-7 mb-4 mb-lg-0">
-                <div class="contact-form">
-                    <h2 class="section-title text-start">Send Us a Message</h2>
-                    <form id="contactForm" method="POST" action="{% url 'contact' %}" novalidate>
-                        {% csrf_token %}
-
-                        <div class="row">
-                            <div class="col-md-6 form-group mb-4">
-                                {{ form.name.label_tag }}
-                                {{ form.name|attr:"class:form-control"|attr:"placeholder:Your full name" }}
-                                {% if form.name.errors %}
-                                    <div class="invalid-feedback d-block">
-                                        {{ form.name.errors }}
-                                    </div>
-                                {% endif %}
-                            </div>
-                            
-                            <div class="col-md-6 form-group mb-4">
-                                {{ form.email.label_tag }}
-                                {{ form.email|attr:"class:form-control"|attr:"placeholder:Your email address" }}
-                                {% if form.email.errors %}
-                                    <div class="invalid-feedback d-block">
-                                        {{ form.email.errors }}
-                                    </div>
-                                {% endif %}
-                            </div>
-                        </div>
-                        
-                        <div class="row">
-                            <div class="col-md-6 form-group mb-4">
-                                {{ form.subject.label_tag }}
-                                {{ form.subject|attr:"class:form-control"|attr:"placeholder:Message subject" }}
-                                {% if form.subject.errors %}
-                                    <div class="invalid-feedback d-block">
-                                        {{ form.subject.errors }}
-                                    </div>
-                                {% endif %}
-                            </div>
-                            
-                            <div class="col-md-6 form-group mb-4">
-                                {{ form.inquiry_type.label_tag }}
-                                {{ form.inquiry_type|attr:"class:form-control" }}
-                                {% if form.inquiry_type.errors %}
-                                    <div class="invalid-feedback d-block">
-                                        {{ form.inquiry_type.errors }}
-                                    </div>
-                                {% endif %}
-                            </div>
-                        </div>
-                        
-                        <div class="form-group mb-4">
-                            {{ form.message.label_tag }}
-                            {{ form.message|attr:"class:form-control"|attr:"rows:6"|attr:"placeholder:Your message" }}
-                            {% if form.message.errors %}
-                                <div class="invalid-feedback d-block">
-                                    {{ form.message.errors }}
-                                </div>
-                            {% endif %}
-                        </div>
-                        
-                        <div class="text-end">
-                            <button type="submit" class="btn btn-primary btn-lg">Send Message</button>
-                        </div>
-                    </form>
+    <!-- Contact Hero -->
+    <section class="bg-primary py-5 text-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h1 class="mb-4 text-white">Entre em Contato</h1>
+                    <p class="lead">Entre em contato com nossa equipe para discutir seu projeto, necessidades de treinamento ou qualquer dúvida
+                        sobre nossos serviços e ofertas.</p>
                 </div>
             </div>
-            
-            <div class="col-lg-5">
-                <div class="contact-info">
-                    <h3>Contact Information</h3>
-                    
-                    <div class="contact-info-item">
-                        <div class="contact-info-icon">
+        </div>
+    </section>
+
+    <!-- Contact Form and Info -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7 mb-4 mb-lg-0">
+                    <div class="contact-form">
+                        <h2 class="section-title text-start">Envie-nos uma Mensagem</h2>
+                        <form id="contactForm" method="POST" action="{% url 'contact' %}" novalidate>
+                            {% csrf_token %}
+                            {{ form.non_field_errors }}
+
+                            <div class="row">
+                                <div class="col-md-6 form-group mb-4">
+                                    {{ form.name.label_tag }}
+                                    {{ form.name }}
+                                    {% if form.name.errors %}
+                                        <div class="invalid-feedback d-block">
+                                            {{ form.name.errors }}
+                                        </div>
+                                    {% endif %}
+                                </div>
+
+                                <div class="col-md-6 form-group mb-4">
+                                    {{ form.email.label_tag }}
+                                    {{ form.email}}
+                                    {% if form.email.errors %}
+                                        <div class="invalid-feedback d-block">
+                                            {{ form.email.errors }}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 form-group mb-4">
+                                    {{ form.subject.label_tag }}
+                                    {{ form.subject}}
+                                    {% if form.subject.errors %}
+                                        <div class="invalid-feedback d-block">
+                                            {{ form.subject.errors }}
+                                        </div>
+                                    {% endif %}
+                                </div>
+
+                                <div class="col-md-6 form-group mb-4">
+                                    {{ form.inquiry_type.label_tag }}
+                                    {{ form.inquiry_type}}
+                                    {% if form.inquiry_type.errors %}
+                                        <div class="invalid-feedback d-block">
+                                            {{ form.inquiry_type.errors }}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+
+                            <div class="form-group mb-4">
+                                {{ form.message.label_tag }}
+                                {{ form.message}}
+                                {% if form.message.errors %}
+                                    <div class="invalid-feedback d-block">
+                                        {{ form.message.errors }}
+                                    </div>
+                                {% endif %}
+                            </div>
+
+                            <div class="text-end">
+                                <button type="submit" class="btn btn-primary btn-lg">Enviar Mensagem</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="col-lg-5">
+                    <div class="contact-info">
+                        <h3>Informações de Contato</h3>
+                        <!--
+                        <div class="contact-info-item">
+                            <div class="contact-info-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h4 class="h6 mb-1">Matriz</h4>
+                                <p class="mb-0">Avenida Empresarial, 123, Sala 500<br>São Paulo, SP 01001<br>Brasil
+                                </p>
+                            </div>
+                        </div>
+                        -->
+                        <div class="contact-info-item">
+                            <div class="contact-info-icon">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div>
+                                <h4 class="h6 mb-1">Telefone</h4>
+                                <p class="mb-0">+55 (16) 99767-6060</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-info-item">
+                            <div class="contact-info-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4 class="h6 mb-1">Email</h4>
+                                <p class="mb-0">info@awc.tec.br</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-info-item">
+                            <div class="contact-info-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div>
+                                <h4 class="h6 mb-1">Horário de Funcionamento</h4>
+                                <p class="mb-0">Segunda - Sexta: 08:00 - 18:00<br>Sábado: 08:00 - 13:00<br>Domingo:
+                                    Fechado</p>
+                            </div>
+                        </div>
+
+                        <div class="mt-4">
+                            <h4 class="h6 mb-3">Conecte-se Conosco</h4>
+                            <div class="social-links">
+                                <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                                <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Global Presence -->
+    <!--<section class="bg-light py-5">
+        <div class="container">
+            <h2 class="section-title">Nossa Presença Global</h2>
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-4 fade-in">
+                    <div class="feature-box text-center h-100">
+                        <div class="feature-icon">
                             <i class="fas fa-map-marker-alt"></i>
                         </div>
-                        <div>
-                            <h4 class="h6 mb-1">Headquarters</h4>
-                            <p class="mb-0">123 Business Avenue, Suite 500<br>New York, NY 10001<br>United States</p>
-                        </div>
+                        <h3 class="h5">North America</h3>
+                        <p>New York (HQ)<br>San Francisco<br>Toronto</p>
                     </div>
-                    
-                    <div class="contact-info-item">
-                        <div class="contact-info-icon">
-                            <i class="fas fa-phone-alt"></i>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4 fade-in">
+                    <div class="feature-box text-center h-100">
+                        <div class="feature-icon">
+                            <i class="fas fa-map-marker-alt"></i>
                         </div>
-                        <div>
-                            <h4 class="h6 mb-1">Phone</h4>
-                            <p class="mb-0">+1 (212) 555-7890</p>
-                        </div>
+                        <h3 class="h5">Europe</h3>
+                        <p>London<br>Berlin<br>Amsterdam</p>
                     </div>
-                    
-                    <div class="contact-info-item">
-                        <div class="contact-info-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div>
-                            <h4 class="h6 mb-1">Email</h4>
-                            <p class="mb-0">info@allworkscompany.com</p>
-                        </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4 fade-in">
+                    <div class="feature-box text-center h-100">
+                        <div class="feature-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>  
+                        <h3 class="h5">Asia Pacific</h3>
+                        <p>Singapore<br>Sydney<br>Tokyo</p>
                     </div>
-                    
-                    <div class="contact-info-item">
-                        <div class="contact-info-icon">
-                            <i class="fas fa-clock"></i>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4 fade-in">
+                    <div class="feature-box text-center h-100">
+                        <div class="feature-icon">
+                            <i class="fas fa-map-marker-alt"></i>
                         </div>
-                        <div>
-                            <h4 class="h6 mb-1">Business Hours</h4>
-                            <p class="mb-0">Monday - Friday: 9:00 AM - 6:00 PM<br>Saturday: 10:00 AM - 2:00 PM<br>Sunday: Closed</p>
-                        </div>
-                    </div>
-                    
-                    <div class="mt-4">
-                        <h4 class="h6 mb-3">Connect With Us</h4>
-                        <div class="social-links">
-                            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                            <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                        </div>
+                        <h3 class="h5">Middle East</h3>
+                        <p>Dubai<br>Abu Dhabi</p>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
-
-<!-- Global Presence -->
-<section class="bg-light py-5">
-    <div class="container">
-        <h2 class="section-title">Our Global Presence</h2>
-        <div class="row">
-            <div class="col-lg-3 col-md-6 mb-4 fade-in">
-                <div class="feature-box text-center h-100">
-                    <div class="feature-icon">
-                        <i class="fas fa-map-marker-alt"></i>
-                    </div>
-                    <h3 class="h5">North America</h3>
-                    <p>New York (HQ)<br>San Francisco<br>Toronto</p>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 mb-4 fade-in">
-                <div class="feature-box text-center h-100">
-                    <div class="feature-icon">
-                        <i class="fas fa-map-marker-alt"></i>
-                    </div>
-                    <h3 class="h5">Europe</h3>
-                    <p>London<br>Berlin<br>Amsterdam</p>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 mb-4 fade-in">
-                <div class="feature-box text-center h-100">
-                    <div class="feature-icon">
-                        <i class="fas fa-map-marker-alt"></i>
-                    </div>
-                    <h3 class="h5">Asia Pacific</h3>
-                    <p>Singapore<br>Sydney<br>Tokyo</p>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 mb-4 fade-in">
-                <div class="feature-box text-center h-100">
-                    <div class="feature-icon">
-                        <i class="fas fa-map-marker-alt"></i>
-                    </div>
-                    <h3 class="h5">Middle East</h3>
-                    <p>Dubai<br>Abu Dhabi</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- FAQ Section -->
-<section class="py-5">
-    <div class="container">
-        <h2 class="section-title">Frequently Asked Questions</h2>
-        <div class="row justify-content-center">
-            <div class="col-lg-8">
-                <div class="accordion" id="faqAccordion">
-                    <div class="accordion-item">
-                        <h3 class="accordion-header" id="headingOne">
-                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                How can we start working with AllWorks Company?
-                            </button>
-                        </h3>
-                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
-                            <div class="accordion-body">
-                                <p>The process begins with an initial consultation to understand your specific needs and objectives. You can reach out through our contact form, email, or phone. One of our representatives will schedule a discovery call to discuss your requirements in detail, after which we'll provide a customized proposal.</p>
+    </section>-->
+    <!-- FAQ Section -->
+    <section class="py-5">
+        <div class="container">
+            <h2 class="section-title">Perguntas Frequentes</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="accordion" id="faqAccordion">
+                        <div class="accordion-item">
+                            <h3 class="accordion-header" id="headingOne">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    Como podemos começar a trabalhar com a AllWorks Company?
+                                </button>
+                            </h3>
+                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                                 data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                                                            <p>O processo começa com uma consulta inicial para entender suas necessidades
+                                        e objetivos específicos. Você pode nos contatar através do formulário de contato, e-mail ou telefone. Um
+                                        de nossos representantes agendará uma chamada de descoberta para discutir seus
+                                        requisitos em detalhes, após a qual forneceremos uma proposta personalizada.</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h3 class="accordion-header" id="headingTwo">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                Do you offer customized training programs for specific industries?
-                            </button>
-                        </h3>
-                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
-                            <div class="accordion-body">
-                                <p>Yes, we specialize in customizing our training programs to address industry-specific challenges and requirements. Our team conducts a thorough needs analysis to develop training content, methodologies, and case studies relevant to your particular industry context, ensuring maximum relevance and practical application.</p>
+                        <div class="accordion-item">
+                            <h3 class="accordion-header" id="headingTwo">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    Vocês oferecem programas de treinamento personalizados para setores específicos?
+                                </button>
+                            </h3>
+                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                                 data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                                                            <p>Sim, nos especializamos em personalizar nossos programas de treinamento para abordar
+                                        desafios e requisitos específicos do setor. Nossa equipe realiza uma análise
+                                        completa das necessidades para desenvolver conteúdo de treinamento, metodologias e estudos de caso
+                                        relevantes para o contexto específico do seu setor, garantindo máxima relevância e
+                                        aplicação prática.</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h3 class="accordion-header" id="headingThree">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                What is your approach to project management?
-                            </button>
-                        </h3>
-                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
-                            <div class="accordion-body">
-                                <p>Our project management approach is adaptive and tailored to each client's specific needs. We employ both traditional and agile methodologies as appropriate, with a strong focus on clear communication, stakeholder engagement, risk management, and quality assurance. Each project is assigned a dedicated project manager who serves as your primary point of contact throughout the engagement.</p>
+                        <div class="accordion-item">
+                            <h3 class="accordion-header" id="headingThree">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseThree" aria-expanded="false"
+                                        aria-controls="collapseThree">
+                                    Qual é sua abordagem para gerenciamento de projetos?
+                                </button>
+                            </h3>
+                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                                 data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                                                            <p>Nossa abordagem de gerenciamento de projetos é adaptativa e personalizada para as necessidades
+                                        específicas de cada cliente. Empregamos metodologias tradicionais e ágeis conforme
+                                        apropriado, com forte foco em comunicação clara, engajamento das partes interessadas,
+                                        gestão de riscos e garantia de qualidade. Cada projeto recebe um gerente
+                                        dedicado que serve como seu ponto principal de contato durante todo o
+                                        projeto.</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h3 class="accordion-header" id="headingFour">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                                Can we access your publications for free?
-                            </button>
-                        </h3>
-                        <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#faqAccordion">
-                            <div class="accordion-body">
-                                <p>We offer a mix of free and premium publications. Our blog posts, selected white papers, and research briefs are available for free download, while our comprehensive research reports, in-depth guides, and specialized technical papers typically require purchase. We also offer subscription options for organizations wanting regular access to our full library of publications.</p>
+                        <div class="accordion-item">
+                            <h3 class="accordion-header" id="headingFour">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseFour" aria-expanded="false"
+                                        aria-controls="collapseFour">
+                                    Can we access your publications for free?
+                                </button>
+                            </h3>
+                            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+                                 data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    <p>We offer a mix of free and premium publications. Our blog posts, selected white
+                                        papers, and research briefs are available for free download, while our
+                                        comprehensive research reports, in-depth guides, and specialized technical
+                                        papers typically require purchase. We also offer subscription options for
+                                        organizations wanting regular access to our full library of publications.</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 {% endblock %}
 
 {% block extra_js %}
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Enhanced form validation with custom messages
-        const contactForm = document.getElementById('contactForm');
-        
-        if (contactForm) {
-            contactForm.addEventListener('submit', function(event) {
-                if (!contactForm.checkValidity()) {
-                    event.preventDefault();
-                    event.stopPropagation();
-                    
-                    // Add custom validation highlighting
-                    const formInputs = contactForm.querySelectorAll('input, textarea, select');
-                    formInputs.forEach(input => {
-                        if (!input.checkValidity()) {
-                            input.classList.add('is-invalid');
-                            input.addEventListener('input', function() {
-                                if (this.checkValidity()) {
-                                    this.classList.remove('is-invalid');
-                                    this.classList.add('is-valid');
-                                }
-                            });
-                        }
-                    });
-                }
-                
-                contactForm.classList.add('was-validated');
-            });
-        }
-    });
-</script>
+    <script>
+        var Toast = Swal.mixin({toast: true,position: 'top-end',showConfirmButton: false,timer: 3000});
+        {% if messages %}
+        Toast.fire({icon: 'success', title: {{ messages }} });
+        {% endif %}
+        document.addEventListener('DOMContentLoaded', function () {
+            const contactForm = document.getElementById('contactForm');
+
+            if (contactForm) {
+                contactForm.addEventListener('submit', function (event) {
+                    if (!contactForm.checkValidity()) {
+                        event.preventDefault();
+                        event.stopPropagation();
+
+                        const formInputs = contactForm.querySelectorAll('input, textarea, select');
+                        formInputs.forEach(input => {
+                            if (!input.checkValidity()) {
+                                input.classList.add('is-invalid');
+                                input.addEventListener('input', function () {
+                                    if (this.checkValidity()) {
+                                        this.classList.remove('is-invalid');
+                                        this.classList.add('is-valid');
+                                    }
+                                });
+                            }
+                        });
+                    }
+
+                    contactForm.classList.add('was-validated');
+                });
+            }
+        });
+    </script>
 {% endblock %}

@@ -88,6 +88,14 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'mail.awc.tec.br'
+EMAIL_PORT = os.getenv("EMAIL_PORT")  # Seu e-mail
+EMAIL_USE_SSL = True  # Usar SSL para a porta 465
+EMAIL_USE_TLS = False # Garantir que TLS esteja desativado
+
+EMAIL_HOST_USER = os.getenv("EMAIL_USER")  # Seu e-mail
+EMAIL_HOST_PASSWORD = os.getenv("EMAIL_PASS")  # Sua senha de aplicativo
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
